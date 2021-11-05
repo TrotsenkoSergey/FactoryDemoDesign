@@ -1,6 +1,8 @@
 ﻿using FactoryAnimals;
 using FactoryAnimals.Models;
 using FactoryAnimals.Models.DataAccess;
+using FactoryAnimals.Presenter;
+using FactoryAnimals.Views;
 using System;
 
 namespace FactoryDemo_ConsoleUI
@@ -9,19 +11,18 @@ namespace FactoryDemo_ConsoleUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("-----Animal production factory.-----");
-            //Console.WriteLine("Choose animal you want to create:\n1. mammals;\n2. amphibians;\n3. birds");
-            
-            var repository = new AnimalsRepository(AmphibiansFactory.GetRandomAmphibians(10));
+            Console.WriteLine("\t\t\t\t-----Animal production factory.-----");
 
-            repository.AddRange(BirdsFactory.GetRandomBirds(10));
+            var presenter = new Presenter(new ConsoleUI());
 
-            repository.Add(MammalsFactory.GetMammal("Lion", "Лёва", 5, 6.6F, 4));
+            presenter.GetAnimals().PrintResult();
 
-            repository.PrintRepository();
+            //var repository = new AnimalsRepository(AmphibiansFactory.GetRandomAmphibians(10));
+            //repository.AddRange(BirdsFactory.GetRandomBirds(10));
+            //repository.Add(MammalsFactory.GetMammal("Lion", "Лёва", 5, 6.6F, 4));
 
-            var dataAccess = new DataAccess(DataAccessFactories.GetDataTxt(), repository);
-            dataAccess.Save();
+            //var dataAccess = new DataAccess(DataAccessFactories.GetDataJson(), repository);
+            //dataAccess.Save();
 
             Console.ReadLine();
         }

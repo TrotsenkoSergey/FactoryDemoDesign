@@ -9,8 +9,6 @@ namespace FactoryAnimals
     {
         private List<IAnimal> animals;
 
-        static int counter;
-
         public List<IAnimal> Animals { get => animals; }
 
         public AnimalsRepository()
@@ -31,14 +29,6 @@ namespace FactoryAnimals
         public void AddRange(IEnumerable<IAnimal> otherAnimals)
         {
             animals.AddRange(otherAnimals);
-        }
-
-        public void PrintRepository()
-        {
-            foreach (var animal in animals)
-            {
-                Console.WriteLine($"{++counter, 3}. {animal.ToString()}");
-            }
         }
     }
 }
