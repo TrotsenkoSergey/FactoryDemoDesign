@@ -11,6 +11,8 @@ namespace FactoryAnimals
 
         static int counter;
 
+        public List<IAnimal> Animals { get => animals; }
+
         public AnimalsRepository()
         {
             animals = new List<IAnimal>();
@@ -33,7 +35,6 @@ namespace FactoryAnimals
 
         public void PrintRepository()
         {
-            
             foreach (var animal in animals)
             {
                 Console.WriteLine($"{++counter, 3}. {animal.ToString()}");
