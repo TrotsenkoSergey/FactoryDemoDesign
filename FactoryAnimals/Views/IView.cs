@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FactoryAnimals.Models.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,34 @@ namespace FactoryAnimals.Views
 {
     public interface IView
     {
-        void ChoiceOfAnimalSpecies();
+        int MainMenu();
 
-        int MenuSelection(int numberOfSelectedElements);
+        Type GetData();
+
+        void SaveInfo(string pathToFile);
+
+        Type ChoiceOfAnimalClass();
+
+        string TypeOfSelection(Type animalClass);
+
+        MethodOfCreation MethodOfCreation();
 
         int CountOfAnimals { get; }
 
-        string Result { set; }
+        string Name { get; }
+
+        int Age { get; }
+
+        float Weight { get; }
+
+        bool PoisonousMucus { get; }
+
+        int NumberOfFeathers { get; }
+
+        int NumberOfCubsInLitter { get; }
+
+        string PrintResult { set; }
+
+        void ExitMenu();
     }
 }

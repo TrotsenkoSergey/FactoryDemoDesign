@@ -8,7 +8,7 @@ namespace FactoryAnimals.Models.DataAccess
     {
         private const string _extension = ".json";
 
-        public void Save(object objectToSaves, string pathToFile = "")
+        public string Save(object objectToSaves, string pathToFile = "")
         {
             if (String.IsNullOrEmpty(pathToFile))
             {
@@ -20,6 +20,8 @@ namespace FactoryAnimals.Models.DataAccess
             var type = objectToSaves.GetType();
             string json = JsonConvert.SerializeObject(objectToSaves, type, null);
             File.WriteAllText(pathToFile, json);
+
+            return pathToFile;
         }
 
         public object Load(string pathToFile)

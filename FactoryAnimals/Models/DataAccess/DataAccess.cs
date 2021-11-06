@@ -17,9 +17,9 @@ namespace FactoryAnimals.Models.DataAccess
             PathToFile = pathToFile;
         }
 
-        public void Save()
+        public string Save()
         {
-            Mode.Save(DataObject, PathToFile);
+            return Mode.Save(DataObject, PathToFile);
         }
 
         public object Load()

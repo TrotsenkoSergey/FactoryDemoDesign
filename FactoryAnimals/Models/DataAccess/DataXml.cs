@@ -8,7 +8,7 @@ namespace FactoryAnimals.Models.DataAccess
     {
         private const string _extension = ".xml";
 
-        public void Save(object objectToSaves, string pathToFile = "")
+        public string Save(object objectToSaves, string pathToFile = "")
         {
             if (String.IsNullOrEmpty(pathToFile))
             {
@@ -25,6 +25,8 @@ namespace FactoryAnimals.Models.DataAccess
             {
                 xmlSerializer.Serialize(fStream, objectToSaves);
             }
+
+            return pathToFile;
         }
 
         public object Load(string pathToFile)

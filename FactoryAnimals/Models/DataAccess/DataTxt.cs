@@ -7,7 +7,7 @@ namespace FactoryAnimals.Models.DataAccess
     {
         private const string _extension = ".txt";
 
-        public void Save(object objectToSaves, string pathToFile = "")
+        public string Save(object objectToSaves, string pathToFile = "")
         {
             if (String.IsNullOrEmpty(pathToFile))
             {
@@ -22,6 +22,8 @@ namespace FactoryAnimals.Models.DataAccess
             {
                 File.AppendAllText(pathToFile, $"{animal.ToString()}\n");
             }
+
+            return pathToFile;
         }
 
         public object Load(string pathToFile)
