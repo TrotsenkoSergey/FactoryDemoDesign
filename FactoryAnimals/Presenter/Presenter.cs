@@ -13,7 +13,7 @@ namespace FactoryAnimals.Presenter
         private AnimalsRepository _animalsRepository;
         private IView _view;
 
-        private Type type;
+        private Type _type;
 
         public Presenter(IView view)
         {
@@ -60,7 +60,7 @@ namespace FactoryAnimals.Presenter
 
         public Presenter ChoiceOfAnimalClass()
         {
-            type = _view.ChoiceOfAnimalClass();
+            _type = _view.ChoiceOfAnimalClass();
             return this;
         }
 
@@ -78,23 +78,23 @@ namespace FactoryAnimals.Presenter
 
         private Presenter GetAnimal()
         {
-            var selection = _view.TypeOfSelection(type);
+            var selection = _view.TypeOfSelection(_type);
             var name = _view.Name;
             var age = _view.Age;
             var weight = _view.Weight;
 
-            if (type == typeof(Mammal))
+            if (_type == typeof(Mammal))
             {
                 var cubs = _view.NumberOfCubsInLitter;
                 _animalsRepository.Add(MammalsFactory.GetMammal(selection, name, age, weight, cubs));
             }
-            else if (type == typeof(Amphibian))
+            else if (_type == typeof(Amphibian))
             {
                 var isMuscus = _view.PoisonousMucus;
                 _animalsRepository.Add(AmphibiansFactory.GetAmphibian(selection, name, age, weight, isMuscus));
 
             }
-            else if (type == typeof(Bird))
+            else if (_type == typeof(Bird))
             {
                 var feathers = _view.NumberOfFeathers;
                 _animalsRepository.Add(BirdsFactory.GetBird(selection, name, age, weight, feathers));
@@ -108,11 +108,11 @@ namespace FactoryAnimals.Presenter
         {
             var countOfAnimals = _view.CountOfAnimals;
 
-            if (type == typeof(Mammal))
+            if (_type == typeof(Mammal))
                 _animalsRepository.AddRange(MammalsFactory.GetRandomMammals(countOfAnimals));
-            else if (type == typeof(Amphibian))
+            else if (_type == typeof(Amphibian))
                 _animalsRepository.AddRange(AmphibiansFactory.GetRandomAmphibians(countOfAnimals));
-            else if (type == typeof(Bird))
+            else if (_type == typeof(Bird))
                 _animalsRepository.AddRange(BirdsFactory.GetRandomBirds(countOfAnimals));
 
             return this;

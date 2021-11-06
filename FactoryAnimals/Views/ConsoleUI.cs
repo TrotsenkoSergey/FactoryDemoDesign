@@ -1,9 +1,9 @@
-﻿using FactoryAnimals.Models.Animals;
+﻿using System;
+using FactoryAnimals.Models.Animals;
 using FactoryAnimals.Models.Animals.Amphibians;
 using FactoryAnimals.Models.Animals.Birds;
 using FactoryAnimals.Models.Animals.Mammals;
 using FactoryAnimals.Models.DataAccess;
-using System;
 
 namespace FactoryAnimals.Views
 {
@@ -27,7 +27,8 @@ namespace FactoryAnimals.Views
         public Type GetData()
         {
             Console.WriteLine($"\nIndicate type of Data in wich you want to save:" +
-                    $"\n1. {nameof(DataJson)};\n2. {nameof(DataTxt)};\n3. {nameof(DataXml)}.");
+                    $"\n1. {nameof(DataJson)};\n2. {nameof(DataTxt)};" +
+                    $"\n3. {nameof(DataXml)} (didnt work...while).");
 
             Console.Write("Choose a value: ");
             switch (CheckCorrect(3))
